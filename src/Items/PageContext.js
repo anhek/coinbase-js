@@ -74,7 +74,7 @@ export const PageContextProvider = ({ws, children}) => {
     }, [ws]) // eslint-disable-line
 
     const checkProduct = (params) => {
-        if (ws.isConnected) {
+        if (ws.readyState===1) {
             ws.send(JSON.stringify({
                 method: params.checked ? "subscribe" : "unsubscribe",
                 params: {product_id: params.name}
